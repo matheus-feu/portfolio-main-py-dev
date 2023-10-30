@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- ======= Header / Navbar ======= -->
+  {% include '_partials/_navbar.html' %}
+
+  <!-- ======= Hero Section ======= -->
+  {% include '_partials/_hero.html' %}
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    {% include '_partials/_about.html' %}
+
+    <!-- ======= Skills Section ======= -->
+    {% include '_partials/_skills.html' %}
+
+    <!-- ======= Resume Section ======= -->
+    {% include '_partials/_resume.html' %}
+
+    <!-- ======= Portfolio Section ======= -->
+    {% include '_partials/_portfolio.html' %}
+
+    <!-- ======= Services Section ======= -->
+    {% include '_partials/_services.html' %}
+
+    <!-- ======= Testimonials Section ======= -->
+    {% include '_partials/_testimonials.html' %}
+
+    <!-- ======= Contact Section ======= -->
+    {% include '_partials/_contact.html' %}
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  {% include '_partials/_footer.html' %}
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+{% endblock %}

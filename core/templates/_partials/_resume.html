@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- ======= Resume Section ======= -->
+{% if experience_data and education_data %}
+<section id="resume" class="resume">
+    <div class="container">
+        <div class="section-title">
+            <h2>Experiências</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6" data-aos="fade-up">
+                <h3 class="resume-title">Resumo</h3>
+                <div class="resume-item pb-0">
+                    <h4>{{ about_data.name }}</h4>
+                    <p><em>{{ about_data.objective }}</em></p>
+                    <ul>
+                        <li>{{ about_data.city }}</li>
+                        <li>{{ about_data.phone }}</li>
+                        <li>{{ about_data.email }}</li>
+                    </ul>
+                </div>
+
+                <h3 class="resume-title">Educação</h3>
+                {% for education in education_data %}
+                <div class="resume-item">
+                    <h4>{{ education.school }}</h4>
+                    {% if education.current %}
+                    <h5>{{ education.year_start}} - Presente</h5>
+                    {% else %}
+                    <h5>{{ education.year_start }} - {{ education.year_end }}</h5>
+                    {% endif %}
+                    <p><em>{{ education.degree }}, {{ education.location_education }}</em></p>
+                    <p>{{ education.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="resume-title">Experiências Profissionais</h3>
+
+                {% for experience in experience_data %}
+                <div class="resume-item">
+                    <h4>{{ experience.company }}</h4>
+
+                    {% if experience.current %}
+                    <h5>{{ experience.date_start }} - Presente</h5>
+                    {% else %}
+                    <h5>{{ experience.date_start }} - {{ experience.date_end }}</h5>
+                    {% endif %}
+                    <p><em>{{ experience.position }}, {{ experience.location_experience }}</em></p>
+
+                    <ul>
+                        {% if experience.task_1 %}
+                        <li>{{ experience.task_1 }}</li>
+                        {% endif %}
+                        {% if experience.task_2 %}
+                        <li>{{ experience.task_2 }}</li>
+                        {% endif %}
+                        {% if experience.task_3 %}
+                        <li>{{ experience.task_3 }}</li>
+                        {% endif %}
+                    </ul>
+                    
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endif %}
+
+<!-- End Resume Section -->
+{% endblock content %}
+
+

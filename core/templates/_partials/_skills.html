@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- ======= Skills Section ======= -->
+{% if skills_data %}
+<section id="skills" class="skills section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Skills</h2>
+        </div>
+
+
+        <div class="row" id="skills-container">
+
+            {% for skill in skills_data %}
+            <div class="col-lg-3 col-md-4 mt-4">
+                <div class="icon-container" data-aos="fade-up">
+                    <div class="icon-content">
+                        <img src="{{ skill.icon.url }}" alt="{{ skill.skill_name }}">
+                        <h3>{{ skill.skill_name }}</h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+{% endif %}
+
+<!-- End Skills Section -->
+{% endblock content %}
+

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- ======= Contact Section ======= -->
+{% if contact_data %}
+<section id="contact" class="contact">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Contato</h2>
+            <p>Entre em contato comigo, estou disponível para trabalhos freelance e em tempo integral.
+                Qualquer dúvida ou sugestão, não hesite em me contatar.</p>
+        </div>
+
+        <div class="row" data-aos="fade-in">
+
+            <div class="col-lg-5 d-flex align-items-stretch">
+                <div class="info">
+                    <div class="address">
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>Localização:</h4>
+                        <p>{{ contact_data.location }}</p>
+                    </div>
+
+                    <div class="email">
+                        <i class="bi bi-envelope"></i>
+                        <h4>E-mail:</h4>
+                        <p><a href="mailto:{{ contact_data.email }}">{{ contact_data.email }}</a></p>
+                    </div>
+
+                    <div class="phone">
+                        <i class="bi bi-whatsapp" onclick="redirectToWhatsApp('{{ contact_data.phone }}')"></i>
+                        <h4>Telefone:</h4>
+                        <p>{{ contact_data.phone }}</p>
+                        </span>
+                    </div>
+
+                    <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14637.804230965196!2d-46.68115419162972!3d-23.480257579257266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef9d5f9f7f791%3A0xeedda6f6445061e1!2sZona%20Norte%20de%20S%C3%A3o%20Paulo%20-%20Conj.%20Hab.%20Vila%20Nova%20Cachoeirinha%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2002675-031!5e0!3m2!1spt-BR!2sbr!4v1698643651160!5m2!1spt-BR!2sbr"
+                            frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                <form action="{% url 'core:index' %}" method="post" role="form" class="php-email-form">
+                    {% csrf_token %}
+
+                    <!-- Name -->
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Nome completo:</label>
+                            <input type="text" name="name" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="name">E-mail</label>
+                            <label for="email"></label><input type="email" class="form-control" name="email" id="email"
+                                                              required>
+                        </div>
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="form-group">
+                        <label for="name">Assunto:</label>
+                        <input type="text" class="form-control" name="subject" id="subject" required>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label for="name">Mensagem:</label>
+                        <textarea class="form-control" name="message" rows="10" required></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="my-3">
+                        <div class="loading">Carregando</div>
+                        <div class="error-message"></div>
+                        <div class="container">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>{{ message }}</strong>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="sent-message">Sua mensagem foi enviada. Obrigado!</div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="text-center">
+                        <button type="submit">Enviar mensagem</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+{% endif %}
+
+<!-- End Contact Section -->
+{% endblock content %}
+
